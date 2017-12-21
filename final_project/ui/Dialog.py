@@ -33,13 +33,13 @@ class Dialog(QDialog, Ui_Dialog):
             i.clicked.connect(self.digitClicked)
             
         self.wait : true
+        self.temp=0
         
         self.plusButton.clicked.connect(self.additiveOperatorClicked)
         
         self.equalButton.clicked.connect(self.equalClicked)
         
-        if self.display.text() == '0' and digitValue == 0.0:
-            return
+    
 
     def digitClicked(self):
         '''
@@ -48,6 +48,7 @@ class Dialog(QDialog, Ui_Dialog):
         
         '''
         #pass
+
         self.display.setText(self.display.text() + self.sender().text())
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
