@@ -24,6 +24,14 @@ class Dialog(QDialog, Ui_Dialog):
         super(Dialog, self).__init__(parent)
         self.setupUi(self)
         '''以下為使用者自行編寫程式碼區'''
+        self.clearAllButton.clicked.connect(self.clearAll)
+        digits = [self.zero, self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine]
+        for i in digits:
+            i.clicked.connect(self.digitClicked)
+        self.wait : true
+        self.temp=0
+        self.plusButton.clicked.connect(self.additiveOperatorClicked)
+        self.equalButton.clicked.connect(self.equalClicked)
 
     def digitClicked(self):
         '''
@@ -31,23 +39,25 @@ class Dialog(QDialog, Ui_Dialog):
         當顯示幕已經為 0, 再按零不會顯示 00, 而仍顯示 0 或 0.0
         
         '''
-        pass
-        
+        #pass
+        self.display.setText(self.display.text() + self.sender().text())
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
         pass
         
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
-        pass
-        
+        #pass
+        self.temp=float(self.display.text())
+        self.display.clear()
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
         pass
         
     def equalClicked(self):
         '''等號按下後的處理方法'''
-        pass
+        #pass
+        self.display.setText(str(self.temp+float(self.display.text())))
         
     def pointClicked(self):
         '''小數點按下後的處理方法'''
@@ -67,8 +77,8 @@ class Dialog(QDialog, Ui_Dialog):
         
     def clearAll(self):
         '''全部清除鍵按下後的處理方法'''
-        pass
-        
+        #pass
+        self.display.clear()
     def clearMemory(self):
         '''清除記憶體鍵按下後的處理方法'''
         pass
