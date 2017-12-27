@@ -271,6 +271,7 @@ class Ui_Dialog(object):
         self.pushButton_20.setText(_translate("Dialog", "+-"))
         self.plusButton.setText(_translate("Dialog", "+"))
         self.equalButton.setText(_translate("Dialog", "="))
+        self.display.setText(_translate("Dialog", "0"))
         self.backspaceButton.setText(_translate("Dialog", "Backspace"))
         self.clearButton.setText(_translate("Dialog", "Clear"))
         self.clearAllButton.setText(_translate("Dialog", "Clear All"))

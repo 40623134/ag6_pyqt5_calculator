@@ -25,9 +25,6 @@ class Dialog(QDialog, Ui_Dialog):
         self.setupUi(self)
         '''以下為使用者自行編寫程式碼區'''
        
-        
-       
-        
         digits = [self.zero, self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine]
         for i in digits:
             i.clicked.connect(self.digitClicked)
@@ -36,7 +33,7 @@ class Dialog(QDialog, Ui_Dialog):
         self.plusButton.clicked.connect(self.additiveOperatorClicked)
         self.temp=0
         self.equalButton.clicked.connect(self.equalClicked)
-        
+
     
 
     def digitClicked(self):
@@ -63,6 +60,8 @@ class Dialog(QDialog, Ui_Dialog):
         #pass
         self.temp=float(self.display.text())
         self.display.clear()
+        self.display.setText('0')
+        self.wait=True
     def multiplicativeOperatorClicked(self):
         '''乘或除按下後進行的處理方法'''
         pass
@@ -92,6 +91,8 @@ class Dialog(QDialog, Ui_Dialog):
         '''全部清除鍵按下後的處理方法'''
         #pass
         self.display.clear()
+        self.display.setText('0')
+        self.wait = True
     def clearMemory(self):
         '''清除記憶體鍵按下後的處理方法'''
         pass
