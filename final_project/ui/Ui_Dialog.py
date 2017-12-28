@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Y:\tmp\github\scrum_pyqt5_calculator\final_project\ui\Dialog.ui'
+# Form implementation generated from reading ui file 'Y:\tmp\github\ag6\final_project\ui\Dialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -271,6 +271,7 @@ class Ui_Dialog(object):
         self.pushButton_20.setText(_translate("Dialog", "+-"))
         self.plusButton.setText(_translate("Dialog", "+"))
         self.equalButton.setText(_translate("Dialog", "="))
+        self.display.setText(_translate("Dialog", "0"))
         self.backspaceButton.setText(_translate("Dialog", "Backspace"))
         self.clearButton.setText(_translate("Dialog", "Clear"))
         self.clearAllButton.setText(_translate("Dialog", "Clear All"))
