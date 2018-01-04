@@ -534,7 +534,11 @@
     </widget>
    </item>
    <item row="5" column="3">
+<<<<<<< HEAD
     <widget class="QPushButton" name="changeButton">
+=======
+    <widget class="QPushButton" name="changbutton">
+>>>>>>> 42d077abfbe41ab8ce6f9e5c315cdd1022ff44c0
      <property name="minimumSize">
       <size>
        <width>50</width>

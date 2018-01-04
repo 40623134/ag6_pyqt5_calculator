@@ -185,6 +185,7 @@ class Ui_Dialog(object):
         self.pointbutton.setFont(font)
         self.pointbutton.setObjectName("pointbutton")
         self.gridLayout.addWidget(self.pointbutton, 5, 2, 1, 1)
+<<<<<<< HEAD
         self.changeButton = QtWidgets.QPushButton(Dialog)
         self.changeButton.setMinimumSize(QtCore.QSize(50, 50))
         self.changeButton.setMaximumSize(QtCore.QSize(50, 50))
@@ -193,6 +194,16 @@ class Ui_Dialog(object):
         self.changeButton.setFont(font)
         self.changeButton.setObjectName("changeButton")
         self.gridLayout.addWidget(self.changeButton, 5, 3, 1, 1)
+=======
+        self.changbutton = QtWidgets.QPushButton(Dialog)
+        self.changbutton.setMinimumSize(QtCore.QSize(50, 50))
+        self.changbutton.setMaximumSize(QtCore.QSize(50, 50))
+        font = QtGui.QFont()
+        font.setPointSize(15)
+        self.changbutton.setFont(font)
+        self.changbutton.setObjectName("changbutton")
+        self.gridLayout.addWidget(self.changbutton, 5, 3, 1, 1)
+>>>>>>> 42d077abfbe41ab8ce6f9e5c315cdd1022ff44c0
         self.plusButton = QtWidgets.QPushButton(Dialog)
         self.plusButton.setMinimumSize(QtCore.QSize(50, 50))
         self.plusButton.setMaximumSize(QtCore.QSize(50, 50))
@@ -268,7 +279,11 @@ class Ui_Dialog(object):
         self.addToMemoryButton.setText(_translate("Dialog", "M+"))
         self.zero.setText(_translate("Dialog", "0"))
         self.pointbutton.setText(_translate("Dialog", "."))
+<<<<<<< HEAD
         self.changeButton.setText(_translate("Dialog", "+/-"))
+=======
+        self.changbutton.setText(_translate("Dialog", "+-"))
+>>>>>>> 42d077abfbe41ab8ce6f9e5c315cdd1022ff44c0
         self.plusButton.setText(_translate("Dialog", "+"))
         self.equalButton.setText(_translate("Dialog", "="))
         self.display.setText(_translate("Dialog", "0"))

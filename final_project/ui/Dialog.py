@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
-
-"""
-Module implementing Dialog.
-"""
-
-from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QDialog
-
 from .Ui_Dialog import Ui_Dialog
-
-
+ 
 class Dialog(QDialog, Ui_Dialog):
+<<<<<<< HEAD
     """
     Class documentation goes here.
     """
@@ -139,37 +132,135 @@ class Dialog(QDialog, Ui_Dialog):
         # 重置判斷是否等待輸入運算數狀態
         self.waitingForOperand = True
 
-        
-    def clearAll(self):
-        '''全部清除鍵按下後的處理方法'''
-        #pass
-        self.display.clear()
-        self.display.setText('0')
-        self.wait = True
-    def clearMemory(self):
-        '''清除記憶體鍵按下後的處理方法'''
-        pass
-        
-    def readMemory(self):
-        '''讀取記憶體鍵按下後的處理方法'''
-        pass
-        
-    def setMemory(self):
-        '''設定記憶體鍵按下後的處理方法'''
-        pass
-        
-    def addToMemory(self):
-        '''放到記憶體鍵按下後的處理方法'''
-        pass
-        
-    def createButton(self):
-        ''' 建立按鍵處理方法, 以 Qt Designer 建立對話框時, 不需要此方法'''
-        pass
-        
-    def abortOperation(self):
-        '''中斷運算'''
-        pass
-        
-    def calculate(self):
-        '''計算'''
-        #pass
+
+     def clear(self):
+         if self.waitingForOperand:
+            return
+         #重新顯示 0
+         self.display.setText('0')
+         self.waitingForOperand = True
+     
+     #重設所有狀態
+     def clearAll(self):
+         self.sumSoFar = 0.0
+         self.factorSoFar = 0.0
+         self.pendingAdditiveOperator = ''
+         self.pendingMultiplicativeOperator = ''
+         self.display.setText('0')
+         self.waitingForOperand = True
+     
+     def backspaceClicked(self):
+         if self.waitingForOperand:
+             return
+         #取得螢幕上的文字 (拿走最後一項)
+         text = self.display.text()[:-1]
+         #如果沒有文字
+         if not text:
+             text = '0'
+             self.waitingForOperand = True
+         #設定數字到螢幕上
+         self.display.setText(text)
+     
+     def pointClicked(self):
+         '''
+         如果等待輸入，
+         按下小數點，相當於輸入 0.xxx，
+         因此自動補零。
+         '''
+         if self.waitingForOperand:
+             self.display.setText('0')
+         #若沒有小數點，補上。
+         if "." not in self.display.text():
+             self.display.setText(self.display.text() + ".")
+         self.waitingForOperand = False
+     
+     def additiveOperatorClicked(self):
+         clickedButton = self.sender()
+         #取得按鈕符號 (運算子)
+         clickedOperator = clickedButton.text()
+         #取得螢幕上的文字，轉成小數
+         operand = float(self.display.text())
+         #如果有乘除運算子
+         if self.pendingMultiplicativeOperator:
+             #如果計算，且失敗。
+             if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                 self.abortOperation()
+                 return
+             #先顯示結果
+             self.display.setText(str(self.factorSoFar))
+             #儲存結果到 operand 名稱 (name) 裡。
+             operand = self.factorSoFar
+             self.factorSoFar = 0.0
+             self.pendingMultiplicativeOperator = ''
+         #如果有加減運算子
+         if self.pendingAdditiveOperator:
+             #如果計算，且失敗。
+             if not self.calculate(operand, self.pendingAdditiveOperator):
+                 self.abortOperation()
+                 return
+             #顯示結果
+             self.display.setText(str(self.sumSoFar))
+         else:
+             #如果沒有加減運算子，儲存乘除的結果。
+             self.sumSoFar = operand
+         #儲存按鈕符號
+         self.pendingAdditiveOperator = clickedOperator
+         self.waitingForOperand = True
+     
+     def multiplicativeOperatorClicked(self):
+         clickedButton = self.sender()
+         clickedOperator = clickedButton.text()
+         operand = float(self.display.text())
+         if self.pendingMultiplicativeOperator:
+             if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                 self.abortOperation()
+                 return
+             self.display.setText(str(self.factorSoFar))
+         else:
+             self.factorSoFar = operand
+         self.pendingMultiplicativeOperator = clickedOperator
+         self.waitingForOperand = True
+     
+     """
+     計算 (被除數, 運算子)，回傳計算結果
+     True: 成功
+     False: 失敗
+     """
+     def calculate(self, rightOperand, pendingOperator):
+         if pendingOperator == "+":
+             self.sumSoFar += rightOperand
+         elif pendingOperator == "-":
+             self.sumSoFar -= rightOperand
+         elif pendingOperator == "*":
+             self.factorSoFar *= rightOperand
+         elif pendingOperator == "/":
+             #防止除零
+             if rightOperand == 0.0:
+                 return False
+             self.factorSoFar /= rightOperand
+         return True
+     
+     #Error 畫面 "####"
+     def abortOperation(self):
+          self.clearAll()
+          self.display.setText("Nope!! Don't copy our calculator.")
+     
+     def equalClicked(self):
+         operand = float(self.display.text())
+         if self.pendingMultiplicativeOperator:
+             if not self.calculate(operand, self.pendingMultiplicativeOperator):
+                 self.abortOperation()
+                 return
+             operand = self.factorSoFar
+             self.factorSoFar = 0.0
+             self.pendingMultiplicativeOperator = ''
+         if self.pendingAdditiveOperator:
+             if not self.calculate(operand, self.pendingAdditiveOperator):
+                 self.abortOperation()
+                 return
+             self.pendingAdditiveOperator = ''
+         else:
+             self.sumSoFar = operand
+         self.display.setText(str(self.sumSoFar))
+         self.sumSoFar = 0.0
+         self.waitingForOperand = True
