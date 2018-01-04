@@ -3,7 +3,7 @@ university_zh: '國立虎尾科技大學'
 institute_zh: '機械設計工程系'
 category_zh: '計算機程式 ag6 期末報告'
 title_zh: 'PyQt5 事件導向計算器'
-title_en: 'PyQt5 Event-Driven Calculator Project'
+title_en: 'PyQt5 Event-Driven Calculator Project-under 40623134'
 author:
 - 設計一甲 40623134 紀冠瑋
 - 設計一甲 40623125 鍾旻諺
