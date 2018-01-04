@@ -56,7 +56,7 @@ class Dialog(QDialog, Ui_Dialog):
 
      def clear(self):
          if self.waitingForOperand:
-             return
+            return
          #重新顯示 0
          self.display.setText('0')
          self.waitingForOperand = True
