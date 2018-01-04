@@ -24,16 +24,42 @@ class Dialog(QDialog, Ui_Dialog):
         super(Dialog, self).__init__(parent)
         self.setupUi(self)
         '''以下為使用者自行編寫程式碼區'''
-       
-        digits = [self.zero, self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine]
-        for i in digits:
+
+        num_button = [self.zero, self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine]
+        for i in num_button:
             i.clicked.connect(self.digitClicked)
         self.clearAllButton.clicked.connect(self.clearAll)    
+        
         self.wait = True
-        self.plusButton.clicked.connect(self.additiveOperatorClicked)
-        self.temp=0
+        #self.plusButton.clicked.connect(self.additiveOperatorClicked)
+        
+        self.clearButton.clicked.connect(self.clear)
+        
+        self.clearAllButton.clicked.connect(self.clearAll)
+        
+        self.clearButton.clicked.connect(self.clear)
+        
+        
+        plus_minus = [self.plusButton,  self.minusButton]
+        for i in plus_minus:
+            i.clicked.connect(self.additiveOperatorClicked)
+        
+        #self.pendingAdditiveOperator = ''
+        #self.temp=0
+        
+        self.pendingAdditiveOperator = ''
+        self.pendingMultiplicativeOperator = ''
+        
+        self.sumSoFar = 0.0
+        self.factorSoFar = 0.0
+        self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
+        
         self.equalButton.clicked.connect(self.equalClicked)
+<<<<<<< HEAD
         self.pushButton_22.clicked.connect(self.pointClicked)
+=======
+    
+>>>>>>> eeed6f05ab16d7ffca51a79e79be7e0a55a9feae
 
     def digitClicked(self):
         '''
@@ -42,6 +68,8 @@ class Dialog(QDialog, Ui_Dialog):
         
         '''
         #pass
+        #self.display.setText(self.display.text() + self.sender().text())
+        
         clickedButton = self.sender()
         digitValue = int(clickedButton.text())
         if self.display.text() == '0' and digitValue == 0:
@@ -58,6 +86,9 @@ class Dialog(QDialog, Ui_Dialog):
     def additiveOperatorClicked(self):
         '''加或減按下後進行的處理方法'''
         #pass
+        clickedButton = self.sender()
+        clickedOperator = clickedButton.text()
+        self.pendingAdditiveOperator = clickedOperator
         self.temp=float(self.display.text())
         self.display.clear()
         self.display.setText('0')
@@ -69,7 +100,9 @@ class Dialog(QDialog, Ui_Dialog):
     def equalClicked(self):
         '''等號按下後的處理方法'''
         #pass
-        self.display.setText(str(self.temp+float(self.display.text())))
+        print(self.temp,self.display.text())
+        self.display.setText(str(self.temp  + float(self.display.text())))
+       
         
     def pointClicked(self):
         '''小數點按下後的處理方法'''
@@ -92,7 +125,12 @@ class Dialog(QDialog, Ui_Dialog):
         
     def clear(self):
         '''清除鍵按下後的處理方法'''
-        pass
+        #pass
+        # 清除顯示幕, 回復到原始顯示 0
+        self.display.setText('0')
+        # 重置判斷是否等待輸入運算數狀態
+        self.waitingForOperand = True
+
         
     def clearAll(self):
         '''全部清除鍵按下後的處理方法'''
@@ -126,4 +164,4 @@ class Dialog(QDialog, Ui_Dialog):
         
     def calculate(self):
         '''計算'''
-        pass
+        #pass
