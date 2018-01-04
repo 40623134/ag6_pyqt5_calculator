@@ -534,7 +534,7 @@
     </widget>
    </item>
    <item row="5" column="3">
-    <widget class="QPushButton" name="pushButton_20">
+    <widget class="QPushButton" name="changeButton">
      <property name="minimumSize">
       <size>
        <width>50</width>
@@ -553,7 +553,7 @@
       </font>
      </property>
      <property name="text">
-      <string>+-</string>
+      <string>+/-</string>
      </property>
     </widget>
    </item>

@@ -39,6 +39,10 @@ class Dialog(QDialog, Ui_Dialog):
         
         self.clearButton.clicked.connect(self.clear)
         
+        self.changeButton.clicked.connect(self.changeSignClicked)
+        
+        self.backspaceButton.clicked.connect(self.backspaceClicked)
+        
         
         plus_minus = [self.plusButton,  self.minusButton]
         for i in plus_minus:
@@ -105,11 +109,27 @@ class Dialog(QDialog, Ui_Dialog):
         
     def changeSignClicked(self):
         '''變號鍵按下後的處理方法'''
-        pass
+        #pass
+        text = self.display.text()
+        value = float(text)
+ 
+        if value > 0.0:
+            text = "-" + text
+        elif value < 0.0:
+            text = text[1:]
+ 
+        self.display.setText(text)
         
     def backspaceClicked(self):
-        '''回復鍵按下的處理方法'''
-        pass
+        if self.wait:
+            return
+ 
+        text = self.display.text()[:-1]
+        if not text:
+            text = '0'
+            self.wait = True
+ 
+        self.display.setText(text)
         
     def clear(self):
         '''清除鍵按下後的處理方法'''
