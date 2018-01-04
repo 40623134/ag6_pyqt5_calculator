@@ -8,19 +8,11 @@ class Dialog(QDialog, Ui_Dialog):
          self.setupUi(self)
          self.waitingForOperand = True
          #數字鈕連接函式 (Function)
-         for button in [
-             self.one,
-             self.two,
-             self.three,
-             self.four,
-             self.five,
-             self.six,
-             self.seven,
-             self.eight,
-             self.nine,
-             self.zero
-         ]:
-             button.clicked.connect(self.digitClicked)
+         number=[self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine, self.zero]
+         for i in number:
+             i.clicked.connect(self.digitClicked)
+         #for button in [self.one, self.two, self.three, self.four, self.five, self.six, self.seven, self.eight, self.nine, self.zero]:
+             #button.clicked.connect(self.digitClicked)
          #Clear 鈕連接函式
          self.clearButton.clicked.connect(self.clear)
          #Clear all 鈕連接函式
@@ -28,7 +20,7 @@ class Dialog(QDialog, Ui_Dialog):
          #backspace 鈕連接函式
          self.backspaceButton.clicked.connect(self.backspaceClicked)
          #小數點按鈕連接函式
-         self.pointButton.clicked.connect(self.pointClicked)
+         self.pointbutton.clicked.connect(self.pointClicked)
          #運算子 (加減、乘除)
          self.pendingAdditiveOperator = ''
          self.pendingMultiplicativeOperator = ''
@@ -42,22 +34,25 @@ class Dialog(QDialog, Ui_Dialog):
          self.equalButton.clicked.connect(self.equalClicked)
      
      def digitClicked(self):
-          #取得傳送信號的物件
-          clickedButton = self.sender()
-          #按鈕上的數字
-          digitValue = int(clickedButton.text())
-          #當顯示的文字為 0，而且此數字為 0。
-          if self.display.text() == '0' and digitValue == 0.0:
-              #回傳 (終止函式)
-              return
-              #如果需要等待操作
-          if self.waitingForOperand:
-              #清除顯示
-              self.display.clear()
-              #重設此物件的狀態
-              self.waitingForOperand = False
-         #顯示數字
-         #self.display.setText(self.display.text() + str(digitValue))
+        # sender() 為使用者點擊按鈕時送出的按鈕指標類別, 在此利用此按鍵類別建立案例
+        # 所建立的 clickedButton 即為當下使用者所按下的按鈕物件
+            clickedButton = self.sender()
+        # text() 為利用按鈕物件的 text 方法取得該按鈕上所顯示的 text 字串
+            digitValue = int(clickedButton.text())
+        # when user clicks 0.0
+            if self.display.text() == '0' and digitValue == 0.0:
+                return
+ 
+        # if under digit input process, clear display for the very first beginning
+        # waitingForOperand 為 True 已經點按運算數值按鈕
+            if self.waitingForOperand:
+            # 清除 display 
+                self.display.clear()
+            # 將判斷是否已經點按運算數值按鈕的判斷變數重新設為  False
+                self.waitingForOperand = False
+        # 利用 setText() 設定 LineEdit 元件顯示字串, 利用 text() 取出目前所顯示的字串, 同時也可利用 text() 擷取按鈕物件上顯示的字串
+        #self.display.setText(self.display.text() + self.sender().text())
+            self.display.setText(self.display.text() + str(digitValue))
 
      def clear(self):
          if self.waitingForOperand:
@@ -190,5 +185,3 @@ class Dialog(QDialog, Ui_Dialog):
          self.display.setText(str(self.sumSoFar))
          self.sumSoFar = 0.0
          self.waitingForOperand = True
-         
-  
