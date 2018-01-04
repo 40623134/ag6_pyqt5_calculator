@@ -55,7 +55,11 @@ class Dialog(QDialog, Ui_Dialog):
         self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
         
         self.equalButton.clicked.connect(self.equalClicked)
+<<<<<<< HEAD
+        self.pushButton_22.clicked.connect(self.pointClicked)
+=======
     
+>>>>>>> eeed6f05ab16d7ffca51a79e79be7e0a55a9feae
 
     def digitClicked(self):
         '''
@@ -74,6 +78,7 @@ class Dialog(QDialog, Ui_Dialog):
             self.display.clear()
             self.wait = False
         self.display.setText(self.display.text() + str(digitValue))
+        
     def unaryOperatorClicked(self):
         '''單一運算元按下後處理方法'''
         pass
@@ -101,7 +106,14 @@ class Dialog(QDialog, Ui_Dialog):
         
     def pointClicked(self):
         '''小數點按下後的處理方法'''
-        pass
+        #pass
+        if self.wait:
+            self.display.setText('0')
+
+        if "." not in self.display.text():
+            self.display.setText(self.display.text() + ".")
+
+        self.waitingForOperand = False
         
     def changeSignClicked(self):
         '''變號鍵按下後的處理方法'''
