@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Y:\tmp\github\ag6\final_project\ui\Dialog.ui'
+# Form implementation generated from reading ui file 'Y:\tmp\github\27\final_project\ui\Dialog.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -177,33 +177,22 @@ class Ui_Dialog(object):
         self.zero.setFont(font)
         self.zero.setObjectName("zero")
         self.gridLayout.addWidget(self.zero, 5, 1, 1, 1)
-        self.pointbutton = QtWidgets.QPushButton(Dialog)
-        self.pointbutton.setMinimumSize(QtCore.QSize(50, 50))
-        self.pointbutton.setMaximumSize(QtCore.QSize(50, 50))
+        self.pointButton = QtWidgets.QPushButton(Dialog)
+        self.pointButton.setMinimumSize(QtCore.QSize(50, 50))
+        self.pointButton.setMaximumSize(QtCore.QSize(50, 50))
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.pointbutton.setFont(font)
-        self.pointbutton.setObjectName("pointbutton")
-        self.gridLayout.addWidget(self.pointbutton, 5, 2, 1, 1)
-<<<<<<< HEAD
-        self.changeButton = QtWidgets.QPushButton(Dialog)
-        self.changeButton.setMinimumSize(QtCore.QSize(50, 50))
-        self.changeButton.setMaximumSize(QtCore.QSize(50, 50))
+        self.pointButton.setFont(font)
+        self.pointButton.setObjectName("pointButton")
+        self.gridLayout.addWidget(self.pointButton, 5, 2, 1, 1)
+        self.changeSignButton = QtWidgets.QPushButton(Dialog)
+        self.changeSignButton.setMinimumSize(QtCore.QSize(50, 50))
+        self.changeSignButton.setMaximumSize(QtCore.QSize(50, 50))
         font = QtGui.QFont()
         font.setPointSize(15)
-        self.changeButton.setFont(font)
-        self.changeButton.setObjectName("changeButton")
-        self.gridLayout.addWidget(self.changeButton, 5, 3, 1, 1)
-=======
-        self.changbutton = QtWidgets.QPushButton(Dialog)
-        self.changbutton.setMinimumSize(QtCore.QSize(50, 50))
-        self.changbutton.setMaximumSize(QtCore.QSize(50, 50))
-        font = QtGui.QFont()
-        font.setPointSize(15)
-        self.changbutton.setFont(font)
-        self.changbutton.setObjectName("changbutton")
-        self.gridLayout.addWidget(self.changbutton, 5, 3, 1, 1)
->>>>>>> 42d077abfbe41ab8ce6f9e5c315cdd1022ff44c0
+        self.changeSignButton.setFont(font)
+        self.changeSignButton.setObjectName("changeSignButton")
+        self.gridLayout.addWidget(self.changeSignButton, 5, 3, 1, 1)
         self.plusButton = QtWidgets.QPushButton(Dialog)
         self.plusButton.setMinimumSize(QtCore.QSize(50, 50))
         self.plusButton.setMaximumSize(QtCore.QSize(50, 50))
@@ -257,7 +246,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "計算機 - 第二組"))
         self.clearMemoryButton.setText(_translate("Dialog", "MC"))
         self.seven.setText(_translate("Dialog", "7"))
         self.eight.setText(_translate("Dialog", "8"))
@@ -278,12 +267,8 @@ class Ui_Dialog(object):
         self.reciprocalButton.setText(_translate("Dialog", "1/x"))
         self.addToMemoryButton.setText(_translate("Dialog", "M+"))
         self.zero.setText(_translate("Dialog", "0"))
-        self.pointbutton.setText(_translate("Dialog", "."))
-<<<<<<< HEAD
-        self.changeButton.setText(_translate("Dialog", "+/-"))
-=======
-        self.changbutton.setText(_translate("Dialog", "+-"))
->>>>>>> 42d077abfbe41ab8ce6f9e5c315cdd1022ff44c0
+        self.pointButton.setText(_translate("Dialog", "."))
+        self.changeSignButton.setText(_translate("Dialog", "+-"))
         self.plusButton.setText(_translate("Dialog", "+"))
         self.equalButton.setText(_translate("Dialog", "="))
         self.display.setText(_translate("Dialog", "0"))
