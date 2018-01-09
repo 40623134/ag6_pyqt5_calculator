@@ -55,11 +55,11 @@ class Dialog(QDialog, Ui_Dialog):
         self.squareRootButton.clicked.connect(self.unaryOperatorClicked)
         
         self.equalButton.clicked.connect(self.equalClicked)
-<<<<<<< HEAD
+
         self.pushButton_22.clicked.connect(self.pointClicked)
-=======
+
     
->>>>>>> eeed6f05ab16d7ffca51a79e79be7e0a55a9feae
+
 
     def digitClicked(self):
         '''
